@@ -1,1534 +1,820 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="en"> <!-- Changed to English -->
-    <meta name="author" content="Adelwin Nugroho Liandy">
-    <meta name="copyright" content="Adelwin Nugroho Liandy">
-    <title>Adelwin Nugroho Liandy - My Portfolio</title> <!-- Changed to English -->
-    <meta name="distribution" content="global">
-    <meta name="title" content="Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior Portfolio"> <!-- Changed to English -->
-    <meta name="description" content="Personal portfolio of Adelwin Nugroho Liandy, a Network Engineer and Cybersecurity Junior dedicated to building innovative network and security solutions."> <!-- Changed to English -->
-    <meta name="keywords" content="portfolio, network engineer, cybersecurity, junior, networking, cyber security, Indonesia"> <!-- Changed to English -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior Portfolio"> <!-- Changed to English -->
-    <meta property="og:description" content="Personal portfolio of Adelwin Nugroho Liandy, a Network Engineer and Cybersecurity Junior dedicated to building innovative web solutions."> <!-- Changed to English -->
-    <meta property="og:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=Your+Profile+Image">
-    <meta property="og:image:alt" content="Adelwin Nugroho Liandy's Profile Photo"> <!-- Changed to English -->
-    <meta property="og:site_name" content="Adelwin Nugroho Liandy's Portfolio"> <!-- Changed to English -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior Portfolio"> <!-- Changed to English -->
-    <meta name="twitter:description" content="Personal portfolio of Adelwin Nugroho Liandy, a Network Engineer and Cybersecurity Junior dedicated to building innovative web solutions."> <!-- Changed to English -->
-    <meta name="twitter:image" content="https://placehold.co/1200x675/0a0a0a/ffffff?text=Your+Profile+Image">
-    <meta name="twitter:image:alt" content="Adelwin Nugroho Liandy's Profile Photo"> <!-- Changed to English -->
-    <meta name="application-name" content="Adelwin Nugroho Liandy's Portfolio"> <!-- Changed to English -->
-    <meta name="theme-color" content="#000000">
-    <meta name="msapplication-TileColor" content="#000000">
-    <meta name="rating" content="general">
-    <meta name="coverage" content="Worldwide">
-    <meta name="geo.region" content="ID">
-    <meta name="geo.placename" content="Indonesia">
-    <meta name="geo.position" content="-6.200000;106.816666">
-    <meta name="ICBM" content="-6.200000, 106.816666">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Color and Style Variables */
-        :root {
-            --primary-dark: #0a0a0a;
-            --secondary-dark: #1a1a1a;
-            --accent-dark: #2a2a2a;
-            --primary-red: #ff0000; /* Main accent color */
-            --secondary-red: #cc0000;
-            --accent-green: #00ff00; /* Color for terminal/highlight */
-            --terminal-green: #00ff41;
-            --text-light: #ffffff;
-            --text-gray: #b0b0b0;
-            --text-dark-gray: #808080;
-            --gradient-red: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            --gradient-terminal: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
-            --shadow-dark: 0 4px 20px rgba(255, 0, 0, 0.3);
-            --shadow-glow: 0 0 30px rgba(255, 0, 0, 0.5);
-            --border-glow: 0 0 10px rgba(255, 0, 0, 0.3);
-        }
-
-        /* General Body Styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--primary-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* Matrix Background */
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: var(--primary-dark);
-            opacity: 0.8;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--accent-dark);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(10, 10, 10, 0.98);
-            box-shadow: var(--shadow-dark);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        /* Logo */
-        .logo {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-red);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            text-shadow: 0 0 10px var(--primary-red);
-        }
-
-        .logo i {
-            color: var(--terminal-green);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Navigation Links */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 1rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-red);
-            text-shadow: 0 0 10px var(--primary-red);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: var(--primary-red);
-            transition: all 0.3s ease;
-            box-shadow: var(--border-glow);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        /* Mobile Menu Toggle Button */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary-red);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: var(--gradient-dark);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px; /* Added top padding to compensate for fixed header */
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,0,0,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
-            opacity: 0.3;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: glow 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-            to { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text h1 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-        }
-
-        .hero-text .highlight {
-            color: var(--primary-red);
-            text-shadow: 0 0 20px var(--primary-red);
-        }
-
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .terminal-text {
-            background: var(--secondary-dark);
-            border: 1px solid var(--accent-dark);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-dark);
-        }
-
-        .terminal-text .prompt {
-            color: var(--terminal-green);
-        }
-
-        .terminal-text .command {
-            color: var(--text-light);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.875rem 2rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .btn-primary {
-            background: var(--gradient-red);
-            color: var(--text-light);
-            border: 1px solid var(--primary-red);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-            text-shadow: 0 0 10px var(--text-light);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--terminal-green);
-            border: 1px solid var(--terminal-green);
-        }
-
-        .btn-secondary:hover {
-            background: var(--terminal-green);
-            color: var(--primary-dark);
-            box-shadow: 0 0 20px var(--terminal-green);
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Styles for profile picture */
-        .profile-image-container {
-            width: 100%; /* Default to 100% width */
-            max-width: 350px; /* Adjust max size */
-            height: 350px; /* Make it square */
-            background: var(--secondary-dark);
-            border-radius: 1.5rem; /* Slightly rounded corners */
-            overflow: hidden;
-            box-shadow: var(--shadow-glow); /* Glow effect */
-            border: 2px solid var(--primary-red); /* Red border */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-            margin: 0 auto; /* Center the image container */
-        }
-
-        .profile-image-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.7); /* More intense glow on hover */
-        }
-
-        .profile-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensure image fills the container without distortion */
-            border-radius: 1.5rem; /* Match container border-radius */
-        }
-
-        /* Remove or adjust if terminal-window is no longer used in hero-visual */
-        .terminal-window {
-            width: 100%;
-            max-width: 500px;
-            background: var(--secondary-dark);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: var(--shadow-dark);
-            border: 1px solid var(--accent-dark);
-        }
-
-        .terminal-header {
-            background: var(--accent-dark);
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .terminal-dots {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .dot.red { background: var(--primary-red); }
-        .dot.yellow { background: #ffff00; }
-        .dot.green { background: var(--terminal-green); }
-
-        .terminal-body {
-            padding: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .terminal-line {
-            margin-bottom: 0.5rem;
-        }
-
-        .terminal-line .prompt {
-            color: var(--terminal-green);
-        }
-
-        .terminal-line .path {
-            color: var(--primary-red);
-        }
-
-        .terminal-line .command {
-            color: var(--text-light);
-        }
-
-        /* General Section */
-        .section {
-            padding: 6rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-        }
-
-        .section-subtitle {
-            font-size: 1.125rem;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--secondary-dark);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--text-gray);
-        }
-
-        .about-text .highlight {
-            color: var(--primary-red);
-            font-weight: 600;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 2rem;
-            background: var(--accent-dark);
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .stat:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--primary-red);
-        }
-
-        .stat-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-red);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px var(--primary-red);
-        }
-
-        .stat-label {
-            color: var(--text-gray);
-            font-weight: 500;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: var(--primary-dark);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: var(--secondary-dark);
-            border-radius: 1rem;
-            overflow: hidden;
-            border: 1px solid var(--accent-dark);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--primary-red);
-        }
-
-        .skill-icon-wrapper {
-            width: 100%;
-            height: 200px;
-            background: var(--gradient-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-red);
-            font-size: 3rem;
-            border-bottom: 1px solid var(--accent-dark);
-        }
-
-        .skill-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .skill-name {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-category {
-            color: var(--primary-red);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .skill-tag {
-            background: var(--accent-dark);
-            color: var(--terminal-green);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.8rem;
-            font-family: 'JetBrains Mono', monospace;
-            border: 1px solid rgba(0, 255, 65, 0.3);
-        }
-
-        .skill-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        /* Projects Section */
-        .projects {
-            background: var(--secondary-dark);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--accent-dark);
-            border-radius: 1rem;
-            overflow: hidden;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--primary-red);
-        }
-
-        .project-image-wrapper {
-            width: 100%;
-            height: 200px;
-            background: var(--gradient-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            font-size: 3rem;
-            border-bottom: 1px solid var(--accent-dark);
-            overflow: hidden;
-        }
-
-        .project-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .project-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-description {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .project-link-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .project-link {
-            width: 40px;
-            height: 40px;
-            background: var(--secondary-dark);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .project-link:hover {
-            background: var(--primary-red);
-            color: var(--text-light);
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--primary-red);
-        }
-
-
-        /* Achievements Section */
-        .achievements {
-            background: var(--primary-dark);
-        }
-
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .achievement-card {
-            background: var(--accent-dark);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .achievement-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-red);
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--primary-red);
-        }
-
-        .achievement-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-red);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .achievement-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .achievement-description {
-            color: var(--text-gray);
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--secondary-dark);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--primary-dark);
-            border-radius: 1rem;
-            border: 1px solid var(--accent-dark);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            border-color: var(--primary-red);
-            box-shadow: var(--border-glow);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-red);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 1.25rem;
-        }
-
-        .contact-details h4 {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.125rem;
-            margin-bottom: 0.25rem;
-            color: var(--text-light);
-        }
-
-        .contact-details p {
-            color: var(--text-gray);
-        }
-
-        .contact-details a {
-            color: var(--primary-red);
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            text-shadow: 0 0 10px var(--primary-red);
-        }
-
-        .hacker-terminal {
-            background: var(--primary-dark);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid var(--accent-dark);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .terminal-title {
-            color: var(--primary-red);
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .terminal-content {
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        .terminal-content .green {
-            color: var(--terminal-green);
-        }
-
-        .terminal-content .red {
-            color: var(--primary-red);
-        }
-
-        .terminal-content .white {
-            color: var(--text-light);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary-dark);
-            padding: 2rem 0;
-            border-top: 1px solid var(--accent-dark);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-gray);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .footer-social a {
-            color: var(--text-gray);
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .footer-social a:hover {
-            color: var(--primary-red);
-            text-shadow: 0 0 10px var(--primary-red);
-        }
-
-        /* Scroll to Top Button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-red);
-            color: var(--text-light);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .scroll-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-to-top:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--secondary-dark);
-                flex-direction: column;
-                padding: 1rem;
-                border: 1px solid var(--accent-dark);
-                transform: translateY(-10px);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                
-                gap: 2rem;
-                /* Changes here: for mobile, reverse element order */
-                display: flex; /* Ensure flexbox for flex-direction */
-                flex-direction: column-reverse; /* This reverses the order */
-            }
-
-            /* Adjust width and add auto margins for centering on mobile */
-            .profile-image-container {
-                width: 90%; /* Reduce width to create space from sides */
-                max-width: 350px; /* Maintain max-width */
-                margin: 0 auto; /* Ensure it's centered */
-                /* Remove padding that previously caused issues */
-                padding: 0; 
-                box-sizing: border-box; 
-                margin-top: 20px; /* Add top margin to move away from header */
-            }
-
-            .hero-buttons {
-                justify-content: center; /* Center buttons on mobile */
-                margin-top: 20px; /* Add some space from the text above */
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 0 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="en" />
+  <!-- Changed to English -->
+  <meta name="author" content="Adelwin Nugroho Liandy" />
+  <meta name="copyright" content="Adelwin Nugroho Liandy" />
+  <title>Adelwin Nugroho Liandy - My Portfolio</title>
+  <!-- Changed to English -->
+  <meta name="distribution" content="global" />
+  <meta name="title" content="Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior Portfolio" />
+  <!-- Changed to English -->
+  <meta name="description"
+    content="Personal portfolio of Adelwin Nugroho Liandy, a Network Engineer and Cybersecurity Junior dedicated to building innovative network and security solutions." />
+  <!-- Changed to English -->
+  <meta name="keywords"
+    content="portfolio, network engineer, cybersecurity, junior, networking, cyber security, Indonesia" />
+  <!-- Changed to English -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior Portfolio" />
+  <!-- Changed to English -->
+  <meta property="og:description"
+    content="Personal portfolio of Adelwin Nugroho Liandy, a Network Engineer and Cybersecurity Junior dedicated to building innovative web solutions." />
+  <!-- Changed to English -->
+  <meta property="og:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=Your+Profile+Image" />
+  <meta property="og:image:alt" content="Adelwin Nugroho Liandy's Profile Photo" />
+  <!-- Changed to English -->
+  <meta property="og:site_name" content="Adelwin Nugroho Liandy's Portfolio" />
+  <!-- Changed to English -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior Portfolio" />
+  <!-- Changed to English -->
+  <meta name="twitter:description"
+    content="Personal portfolio of Adelwin Nugroho Liandy, a Network Engineer and Cybersecurity Junior dedicated to building innovative web solutions." />
+  <!-- Changed to English -->
+  <meta name="twitter:image" content="https://placehold.co/1200x675/0a0a0a/ffffff?text=Your+Profile+Image" />
+  <meta name="twitter:image:alt" content="Adelwin Nugroho Liandy's Profile Photo" />
+  <!-- Changed to English -->
+  <meta name="application-name" content="Adelwin Nugroho Liandy's Portfolio" />
+  <!-- Changed to English -->
+  <meta name="theme-color" content="#000000" />
+  <meta name="msapplication-TileColor" content="#000000" />
+  <meta name="rating" content="general" />
+  <meta name="coverage" content="Worldwide" />
+  <meta name="geo.region" content="ID" />
+  <meta name="geo.placename" content="Indonesia" />
+  <meta name="geo.position" content="-6.200000;106.816666" />
+  <meta name="ICBM" content="-6.200000, 106.816666" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-    <div class="matrix-bg"></div>
+  <div class="matrix-bg"></div>
 
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">
-                <i class="fas fa-terminal"></i>
-                AdelwinNL
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <i class="fas fa-terminal"></i>
+        AdelwinNL
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+        <li class="nav-theme-toggle">
+          <button class="theme-toggle theme-toggle--mobile" aria-label="Toggle theme" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <button class="theme-toggle theme-toggle--header" aria-label="Toggle theme" title="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            Hello, I'm <span class="highlight">Adelwin Nugroho Liandy</span>
+          </h1>
+          <p>
+            Aspiring Network Engineer and Cybersecurity Specialist — still
+            growing, but driven by curiosity and a strong passion to learn.
+          </p>
+          <div class="terminal-text">
+            <div>
+              <span class="prompt">user@adelwin-nugroho:~#</span>
+              <span class="command">echo $Junior</span>
+            </div>
+            <div>Network Engineer | Cybersecurity Junior</div>
+            <div>
+              <span class="prompt">user@adelwin-nugroho:~#</span>
+              <span class="command">cat /etc/bio</span>
+            </div>
+            <div>Passionate about network security and infrastructure.</div>
+          </div>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fas fa-code"></i>
+              View Projects
             </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <a href="https://www.linkedin.com/in/adelwinnl" target="_blank" class="btn btn-secondary">
+              <i class="fab fa-linkedin"></i>
+              My LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="profile-image-container">
+            <img src="./img/ppku.jpg" alt="Your Profile Photo" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">ABOUT ME</h2>
+        <p class="section-subtitle">
+          A few things about my journey in Network Engineering and
+          Cybersecurity.
+        </p>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Hello! I'm <span class="highlight">Adelwin Nugroho Liandy</span>,
+            an enthusiastic Network Engineer and Cybersecurity Junior with 1
+            years of experience in networking and cyber security. I have a
+            strong interest in building secure and efficient network
+            infrastructures.
+          </p>
+        </br>
+          <p>
+            I am proficient in various network and security technologies, and
+            always eager to learn new things and face technical challenges.
+          </p>
+                  </br>
+          <p>
+            My goal is to create network solutions that are not only
+            functional but also have a high level of security. Let's
+            collaborate to bring your ideas to life!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">MY SKILLS</h2>
+        <p class="section-subtitle">
+          Technologies and skills I master in Network Engineering and
+          Cybersecurity.
+        </p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon-wrapper">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <div class="skill-info">
+            <h3 class="skill-name">Network Fundamentals</h3>
+            <p class="skill-desc">Designing and operating reliable IP networks, routing and switching.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">TCP/IP</span>
+              <span class="skill-tag">Routing & Switching</span>
+              <span class="skill-tag">VLAN</span>
+            </div>
+            <div class="skill-social">
+              <a href="#" class="social-link"><i class="fas fa-cogs"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrapper">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="skill-info">
+            <h3 class="skill-name">Cybersecurity</h3>
+            <p class="skill-desc">Threat detection, firewall strategy and vulnerability assessments.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Firewall</span>
+              <span class="skill-tag">IDS/IPS</span>
+              <span class="skill-tag">Penetration Testing</span>
+            </div>
+            <div class="skill-social">
+              <a href="#" class="social-link"><i class="fas fa-bug"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrapper">
+            <i class="fas fa-server"></i>
+          </div>
+          <div class="skill-info">
+            <h3 class="skill-name">Server Management</h3>
+            <p class="skill-desc">Linux & Windows server setup, maintenance and automation.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">Windows Server</span>
+              <span class="skill-tag">Virtualization</span>
+            </div>
+            <div class="skill-social">
+              <a href="#" class="social-link"><i class="fas fa-hdd"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrapper">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <div class="skill-info">
+            <h3 class="skill-name">Cloud & Virtualization</h3>
+              <p class="skill-desc">Running and scaling services in the cloud and virtual environments.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS/Azure/GCP</span>
+              <span class="skill-tag">VMware</span>
+              <span class="skill-tag">Docker</span>
+            </div>
+            <div class="skill-social">
+              <a href="#" class="social-link"><i class="fas fa-cloud-upload-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrapper">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="skill-info">
+            <h3 class="skill-name">Scripting & Automation</h3>
+            <p class="skill-desc">Python and Bash scripts for repeatable device configuration and orchestration.</p>
+            <p class="skill-category">Automation</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Bash</span>
+              <span class="skill-tag">Ansible</span>
+            </div>
+            <div class="skill-social">
+              <a href="#" class="social-link"><i class="fas fa-terminal"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrapper">
+            <i class="fas fa-tools"></i>
+          </div>
+          <div class="skill-info">
+            <h3 class="skill-name">Monitoring & Troubleshooting</h3>
+            <p class="skill-desc">Packet analysis, alerting and incident resolution to keep networks healthy.</p>
+            <p class="skill-category">Network Operations</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Wireshark</span>
+              <span class="skill-tag">Nagios/Zabbix</span>
+              <span class="skill-tag">Log Analysis</span>
+            </div>
+            <div class="skill-social">
+              <a href="#" class="social-link"><i class="fas fa-search"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section experience">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">MY EXPERIENCE</h2>
+      <p class="section-subtitle">
+        Professional journey and work experience in Network Engineering and Cybersecurity.
+      </p>
+    </div>
+    <div class="experience-card">
+      <div class="experience-header">
+        <i class="fas fa-briefcase"></i>
+        <h3>Professional Experience</h3>
+      </div>
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="experience-date">2024 - Present</div>
+          <div class="experience-content">
+            <h4>Network Security Engineer</h4>
+            <h5>PT. Example Company</h5>
+            <ul class="experience-details">
+              <li>Implemented and maintained network security infrastructure protecting over 500+ endpoints</li>
+              <li>Reduced security incidents by 40% through proactive monitoring and threat detection</li>
+              <li>Designed and deployed enterprise-wide firewall architecture using Cisco ASA and Palo Alto</li>
+              <li>Led security awareness training programs for 200+ employees</li>
             </ul>
-            <button class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-date">2023 - 2024</div>
+          <div class="experience-content">
+            <h4>Junior Network Engineer</h4>
+            <h5>PT. Another Company</h5>
+            <ul class="experience-details">
+              <li>Managed and optimized network infrastructure for 100+ users</li>
+              <li>Implemented VLAN segmentation improving network performance by 25%</li>
+              <li>Conducted regular network maintenance and troubleshooting</li>
+              <li>Assisted in migration to cloud-based infrastructure</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">MY PROJECTS</h2>
+        <p class="section-subtitle">
+          Some results of my hard work and innovation in Network Engineering
+          and Cybersecurity.
+        </p>
+      </div>
+      <div class="projects-grid">
+        <!-- Example Project 1 -->
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Network+Design" alt="Network Design Project" />
+            <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Networks+Design" alt="Network Design Projects" />
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">
+              Office Network Design & Implementation
+            </h3>
+            <p class="project-description">
+              Designing and implementing a secure and scalable network
+              infrastructure for a new office.
+            </p>
+            <div class="project-tech-tags">
+              <span class="skill-tag">Cisco Packet Tracer</span>
+              <span class="skill-tag">VLAN</span>
+              <span class="skill-tag">Firewall Rules</span>
+            </div>
+            <div class="project-link-group">
+              <a href="https://example.com/network-design-report" target="_blank" class="project-link"><i
+                  class="fas fa-file-alt"></i></a>
+              <a href="https://github.com/AdelwinLiandy/network-design-repo" target="_blank" class="project-link"><i
+                  class="fab fa-github"></i></a>
+            </div>
+            <button class="btn btn-secondary project-detail-btn" data-project="0">
+              More Details
             </button>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hello, I'm <span class="highlight">Adelwin Nugroho Liandy</span></h1>
-                    <p>Aspiring Network Engineer and Cybersecurity Specialist — still growing, but driven by curiosity and a strong passion to learn.</p>
-                    <div class="terminal-text">
-                        <div><span class="prompt">user@adelwin-nugroho:~#</span> <span class="command">echo $Junior</span></div>
-                        <div>Network Engineer | Cybersecurity Junior</div>
-                        <div><span class="prompt">user@adelwin-nugroho:~#</span> <span class="command">cat /etc/bio</span></div>
-                        <div>Passionate about network security and infrastructure.</div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-code"></i>
-                            View Projects
-                        </a>
-                        <a href="https://www.linkedin.com/in/adelwinnl" target="_blank" class="btn btn-secondary">
-                            <i class="fab fa-linkedin"></i>
-                            My LinkedIn
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="profile-image-container">
-                        <img src="./img/ppku.jpg" alt="Your Profile Photo">
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <section id="about" class="section about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">ABOUT ME</h2>
-                <p class="section-subtitle">A few things about my journey in Network Engineering and Cybersecurity.</p>
+        <!-- Example Project 2 -->
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Security+Audit" alt="Security Audit Project" />
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Web System Security Audit</h3>
+            <p class="project-description">
+              Conducting a comprehensive security audit on a web application,
+              identifying vulnerabilities, and providing recommendations.
+            </p>
+            <div class="project-tech-tags">
+              <span class="skill-tag">OWASP ZAP</span>
+              <span class="skill-tag">Nmap</span>
+              <span class="skill-tag">Penetration Testing</span>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hello! I'm <span class="highlight">Adelwin Nugroho Liandy</span>, an enthusiastic Network Engineer and Cybersecurity Junior with 1 years of experience in networking and cyber security. I have a strong interest in building secure and efficient network infrastructures.</p>
-                    <p>I am proficient in various network and security technologies, and always eager to learn new things and face technical challenges.</p>
-                    <p>My goal is to create network solutions that are not only functional but also have a high level of security. Let's collaborate to bring your ideas to life!</p>
-                </div>
-                <div class="stats-grid">
-                    <div class="stat">
-                        <div class="stat-number">10+</div>
-                        <div class="stat-label">Projects/Implementations</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Years of Experience</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Technologies Mastered</div>
-                    </div>
-
-                </div>
+            <div class="project-link-group">
+              <a href="https://example.com/security-audit-report" target="_blank" class="project-link"><i
+                  class="fas fa-file-pdf"></i></a>
+              <a href="https://github.com/AdelwinLiandy/security-audit-tools" target="_blank" class="project-link"><i
+                  class="fab fa-github"></i></a>
             </div>
+            <button class="btn btn-secondary project-detail-btn" data-project="1">
+              More Details
+            </button>
+          </div>
         </div>
-    </section>
 
-    <section id="skills" class="section skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">MY SKILLS</h2>
-                <p class="section-subtitle">Technologies and skills I master in Network Engineering and Cybersecurity.</p>
+        <!-- Example Project 3 -->
+        <div class="project-card">
+          <div class="project-image-wrapper">
+            <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Automation+Script"
+              alt="Automation Script Project" />
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">
+              Router Configuration Automation Script
+            </h3>
+            <p class="project-description">
+              Developing Python scripts for automating the initial
+              configuration of Cisco routers and switches.
+            </p>
+            <div class="project-tech-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Paramiko</span>
+              <span class="skill-tag">Network Automation</span>
             </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon-wrapper">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <div class="skill-info">
-                        <h3 class="skill-name">Network Fundamentals</h3>
-                        <p class="skill-category">Networking</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">TCP/IP</span>
-                            <span class="skill-tag">Routing & Switching</span>
-                            <span class="skill-tag">VLAN</span>
-                        </div>
-                        <div class="skill-social">
-                            <a href="#" class="social-link"><i class="fas fa-cogs"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon-wrapper">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="skill-info">
-                        <h3 class="skill-name">Cybersecurity</h3>
-                        <p class="skill-category">Cyber Security</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Firewall</span>
-                            <span class="skill-tag">IDS/IPS</span>
-                            <span class="skill-tag">Penetration Testing</span>
-                        </div>
-                        <div class="skill-social">
-                            <a href="#" class="social-link"><i class="fas fa-bug"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon-wrapper">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="skill-info">
-                        <h3 class="skill-name">Server Management</h3>
-                        <p class="skill-category">System Administration</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">Windows Server</span>
-                            <span class="skill-tag">Virtualization</span>
-                        </div>
-                        <div class="skill-social">
-                            <a href="#" class="social-link"><i class="fas fa-hdd"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon-wrapper">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <div class="skill-info">
-                        <h3 class="skill-name">Cloud & Virtualization</h3>
-                        <p class="skill-category">Infrastructure</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AWS/Azure/GCP</span>
-                            <span class="skill-tag">VMware</span>
-                            <span class="skill-tag">Docker</span>
-                        </div>
-                        <div class="skill-social">
-                            <a href="#" class="social-link"><i class="fas fa-cloud-upload-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon-wrapper">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="skill-info">
-                        <h3 class="skill-name">Scripting & Automation</h3>
-                        <p class="skill-category">Automation</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Bash</span>
-                            <span class="skill-tag">Ansible</span>
-                        </div>
-                        <div class="skill-social">
-                            <a href="#" class="social-link"><i class="fas fa-terminal"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-card">
-                    <div class="skill-icon-wrapper">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="skill-info">
-                        <h3 class="skill-name">Monitoring & Troubleshooting</h3>
-                        <p class="skill-category">Network Operations</p>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Wireshark</span>
-                            <span class="skill-tag">Nagios/Zabbix</span>
-                            <span class="skill-tag">Log Analysis</span>
-                        </div>
-                        <div class="skill-social">
-                            <a href="#" class="social-link"><i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="project-link-group">
+              <a href="https://example.com/automation-demo" target="_blank" class="project-link"><i
+                  class="fas fa-play-circle"></i></a>
+              <a href="https://github.com/AdelwinLiandy/router-automation" target="_blank" class="project-link"><i
+                  class="fab fa-github"></i></a>
             </div>
+            <button class="btn btn-secondary project-detail-btn" data-project="2">
+              More Details
+            </button>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="projects" class="section projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">MY PROJECTS</h2>
-                <p class="section-subtitle">Some results of my hard work and innovation in Network Engineering and Cybersecurity.</p>
-            </div>
-            <div class="projects-grid">
-                <!-- Example Project 1 -->
-                <div class="project-card">
-                    <div class="project-image-wrapper">
-                        <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Network+Design" alt="Network Design Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Office Network Design & Implementation</h3>
-                        <p class="project-description">Designing and implementing a secure and scalable network infrastructure for a new office.</p>
-                        <div class="project-tech-tags">
-                            <span class="skill-tag">Cisco Packet Tracer</span>
-                            <span class="skill-tag">VLAN</span>
-                            <span class="skill-tag">Firewall Rules</span>
-                        </div>
-                        <div class="project-link-group">
-                            <a href="https://example.com/network-design-report" target="_blank" class="project-link"><i class="fas fa-file-alt"></i></a>
-                            <a href="https://github.com/AdelwinLiandy/network-design-repo" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Example Project 2 -->
-                <div class="project-card">
-                    <div class="project-image-wrapper">
-                        <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Security+Audit" alt="Security Audit Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Web System Security Audit</h3>
-                        <p class="project-description">Conducting a comprehensive security audit on a web application, identifying vulnerabilities, and providing recommendations.</p>
-                        <div class="project-tech-tags">
-                            <span class="skill-tag">OWASP ZAP</span>
-                            <span class="skill-tag">Nmap</span>
-                            <span class="skill-tag">Penetration Testing</span>
-                        </div>
-                        <div class="project-link-group">
-                            <a href="https://example.com/security-audit-report" target="_blank" class="project-link"><i class="fas fa-file-pdf"></i></a>
-                            <a href="https://github.com/AdelwinLiandy/security-audit-tools" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Example Project 3 -->
-                <div class="project-card">
-                    <div class="project-image-wrapper">
-                        <img src="https://placehold.co/400x200/1a1a1a/ffffff?text=Automation+Script" alt="Automation Script Project">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Router Configuration Automation Script</h3>
-                        <p class="project-description">Developing Python scripts for automating the initial configuration of Cisco routers and switches.</p>
-                        <div class="project-tech-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Paramiko</span>
-                            <span class="skill-tag">Network Automation</span>
-                        </div>
-                        <div class="project-link-group">
-                            <a href="https://example.com/automation-demo" target="_blank" class="project-link"><i class="fas fa-play-circle"></i></a>
-                            <a href="https://github.com/AdelwinLiandy/router-automation" target="_blank" class="project-link"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more projects here -->
-
-            </div>
+  <section id="achievements" class="section achievements">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">MY ACHIEVEMENTS</h2>
+        <p class="section-subtitle">
+          Some key milestones in my professional journey.
+        </p>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=CCNA+Certification"
+              alt="CCNA Certification Preview" class="achievement-image" />
+          </div>
+          <h3 class="achievement-title">CCNA Certification</h3>
+          <p class="achievement-description">
+            Successfully obtained the globally recognized Cisco Certified
+            Network Associate (CCNA) certification.
+          </p>
+          <button class="btn btn-secondary achievement-detail-btn" data-achievement="0">
+            More Details
+          </button>
         </div>
-    </section>
 
-    <section id="achievements" class="section achievements">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">MY ACHIEVEMENTS</h2>
-                <p class="section-subtitle">Some key milestones in my professional journey.</p>
-            </div>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="achievement-title">CCNA Certification</h3>
-                    <p class="achievement-description">Successfully obtained the globally recognized Cisco Certified Network Associate (CCNA) certification.</p>
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-network-wired"></i> <!-- Changed icon to network-wired -->
-                    </div>
-                    <h3 class="achievement-title">MTCNA Certification</h3> <!-- Changed to MTCNA Certification -->
-                    <p class="achievement-description">Achieved Mikrotik Certified Network Associate (MTCNA) certification, validating foundational Mikrotik networking expertise.</p> <!-- Changed description -->
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-trophy"></i> <!-- Changed icon to trophy -->
-                    </div>
-                    <h3 class="achievement-title">Winner of Central Java Shopee Barokah Digital Marketing Competition</h3> <!-- Changed to English -->
-                    <p class="achievement-description">Awarded as the winner of the Central Java Shopee Barokah Digital Marketing Competition, showcasing strong marketing skills.</p> <!-- Changed description -->
-                </div>
-
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="achievement-title">Network Monitoring System Innovation</h3>
-                    <p class="achievement-description">Developed a custom network monitoring system that improved anomaly detection efficiency by 20%.</p>
-                </div>
-            </div>
+        <div class="achievement-card">
+          <div class="achievement-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=MTCNA+Certification"
+              alt="MTCNA Certification Preview" class="achievement-image" />
+          </div>
+          <h3 class="achievement-title">MTCNA Certification</h3>
+          <p class="achievement-description">
+            Achieved Mikrotik Certified Network Associate (MTCNA)
+            certification, validating foundational Mikrotik networking
+            expertise.
+          </p>
+          <button class="btn btn-secondary achievement-detail-btn" data-achievement="1">
+            More Details
+          </button>
         </div>
-    </section>
 
-    <section id="contact" class="section contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">CONTACT ME</h2>
-                <p class="section-subtitle">Feel free to reach out for collaborations or opportunities.</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p><a href="mailto:adelwin122@gmail.com">adelwin122@gmail.com</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <p><a href="https://www.linkedin.com/in/adelwinnl" target="_blank">/adelwinnl</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Instagram</h4>
-                            <p><a href="https://www.instagram.com/adlwnngrho_" target="_blank">@adlwnngrho_</a></p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Telegram</h4>
-                        <p><a href="https://t.me/adelwinnl" target="_blank">@adelwinnl</a></p> <!-- Updated Telegram username -->
-                        </div>
-                    </div>
-
-                    <!-- Location removed as requested -->
-                </div>
-
-                <div class="hacker-terminal">
-                    <div class="terminal-title">$ contact --info</div>
-                    <div class="terminal-content">
-                        <div><span class="green">┌─[</span><span class="red">adelwin-nugroho@portfolio</span><span class="green">]─[</span><span class="red">~/contact</span><span class="green">]</span></div>
-                        <div><span class="green">└─$</span> <span class="white">whoami</span></div>
-                        <div><span class="red">Adelwin Nugroho Liandy - Network Engineer, Cybersecurity Junior</span></div>
-                        <div></div>
-                        <div><span class="green">└─$</span> <span class="white">echo "Reach out:"</span></div>
-                        <div><span class="red">Email: adelwin122@gmail.com</span></div>
-                        <div><span class="red">LinkedIn: linkedin.com/in/adelwinnl</span></div>
-                        <div><span class="red">Instagram: instagram.com/adlwnngrho_</span></div>
-                        <div><span class="red">Telegram: t.me/adelwinnl</span></div> <!-- Updated Telegram in terminal -->
-                        <div></div>
-                        <div><span class="green">└─$</span> <span class="white">./greetings.sh</span></div>
-                        <div><span class="red"># Looking forward to connecting!</span></div>
-                        <div><span class="red"># Let's build something great together.</span></div>
-                        <div></div>
-                        <div><span class="green">└─$</span> <span class="white">_</span></div>
-                    </div>
-                </div>
-            </div>
+        <div class="achievement-card">
+          <div class="achievement-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=Shopee+Barokah+Winner"
+              alt="Shopee Barokah Winner Preview" class="achievement-image" />
+          </div>
+          <h3 class="achievement-title">
+            Winner of Central Java Shopee Barokah Digital Marketing
+            Competition
+          </h3>
+          <p class="achievement-description">
+            Awarded as the winner of the Central Java Shopee Barokah Digital
+            Marketing Competition, showcasing strong marketing skills.
+          </p>
+          <button class="btn btn-secondary achievement-detail-btn" data-achievement="2">
+            More Details
+          </button>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 AdelwinNL. All Rights Reserved.</p>
-                <div class="footer-social">
-                    <a href="https://t.me/adelwinnl" target="_blank"><i class="fab fa-telegram"></i></a> <!-- Updated Telegram username in footer -->
-                    <a href="https://www.instagram.com/adlwnngrho_" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/adelwinnl" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:adelwin122@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
+        <div class="achievement-card">
+          <div class="achievement-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=Network+Monitoring+Innovation"
+              alt="Network Monitoring System Innovation Preview" class="achievement-image" />
+          </div>
+          <h3 class="achievement-title">
+            Network Monitoring System Innovation
+          </h3>
+          <p class="achievement-description">
+            Developed a custom network monitoring system that improved anomaly
+            detection efficiency by 20%.
+          </p>
+          <button class="btn btn-secondary achievement-detail-btn" data-achievement="3">
+            More Details
+          </button>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <button class="scroll-to-top" onclick="scrollToTop()">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+  <section id="blog" class="section blog">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">MY BLOG</h2>
+        <p class="section-subtitle">
+          Latest articles and insights about networking and cybersecurity.
+        </p>
+      </div>
+      <div class="blog-grid">
+        <!-- Blog Post 1 -->
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=Network+Security" alt="Network Security Blog"
+              class="blog-image" />
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              Understanding Network Security Fundamentals
+            </h3>
+            <p class="blog-excerpt">
+              A comprehensive guide to basic network security principles and
+              best practices.
+            </p>
+            <div class="blog-meta">
+              <div class="blog-meta-group">
+                <span class="blog-badge date-badge">Sept 25, 2025</span>
+                <span class="blog-badge tag-badge">Security</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary blog-detail-btn" data-blog="0">
+              Read More
+            </button>
+          </div>
+        </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const header = document.querySelector('header');
-            const scrollToTopBtn = document.querySelector('.scroll-to-top');
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const navLinks = document.querySelector('.nav-links');
+        <!-- Blog Post 2 -->
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=Cloud+Computing" alt="Cloud Computing Blog"
+              class="blog-image" />
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">Cloud Security Best Practices</h3>
+            <p class="blog-excerpt">
+              Essential security measures for protecting cloud-based
+              infrastructure and applications.
+            </p>
+            <div class="blog-meta">
+              <div class="blog-meta-group">
+                <span class="blog-badge date-badge">Sept 20, 2025</span>
+                <span class="blog-badge tag-badge">Cloud</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary blog-detail-btn" data-blog="1">
+              Read More
+            </button>
+          </div>
+        </div>
 
-            // Scroll effect on header and scroll-to-top button
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    header.classList.remove('scrolled');
-                    scrollToTopBtn.classList.remove('visible');
-                }
-            });
+        <!-- Blog Post 3 -->
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=Cybersecurity" alt="Cybersecurity Blog"
+              class="blog-image" />
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">Modern Cybersecurity Challenges</h3>
+            <p class="blog-excerpt">
+              Exploring current cybersecurity threats and effective defense
+              strategies.
+            </p>
+            <div class="blog-meta">
+              <div class="blog-meta-group">
+                <span class="blog-badge date-badge">Sept 15, 2025</span>
+                <span class="blog-badge tag-badge">Cybersecurity</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary blog-detail-btn" data-blog="2">
+              Read More
+            </button>
+          </div>
+        </div>
 
-            // Toggle mobile menu
-            if (mobileMenuToggle) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
+        <!-- Blog Post 4 -->
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="https://dummyimage.com/600x400/000/fff.png&text=Network+Architecture"
+              alt="Network Architecture Blog" class="blog-image" />
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              Building Scalable Network Architectures
+            </h3>
+            <p class="blog-excerpt">
+              Tips and strategies for designing robust and scalable network
+              infrastructures.
+            </p>
+            <div class="blog-meta">
+              <div class="blog-meta-group">
+                <span class="blog-badge date-badge">Sept 10, 2025</span>
+                <span class="blog-badge tag-badge">Architecture</span>
+              </div>
+            </div>
+            <button class="btn btn-secondary blog-detail-btn" data-blog="3">
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // Smooth scroll for navigation links
-            const navLinksElements = document.querySelectorAll('.nav-links a');
-            navLinksElements.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent default link behavior
-                    const targetId = this.getAttribute('href'); // Get target ID from href attribute
-                    if (targetId && targetId.length > 1) {
-                        const targetElement = document.querySelector(targetId); // Get the target element
-                        if (targetElement) {
-                            targetElement.scrollIntoView({ // Scroll to target element smoothly
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                    navLinks.classList.remove('active'); // Close mobile menu after click
-                });
-            });
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">CONTACT ME</h2>
+        <p class="section-subtitle">
+          Feel free to reach out for collaborations or opportunities.
+        </p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <a href="mailto:adelwin122@gmail.com" class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>adelwin122@gmail.com</p>
+            </div>
+          </a>
 
-            // Intersection Observer for animating elements on scroll
-            const observerOptions = {
-                threshold: 0.1, // Trigger when 10% of the element is visible
-                rootMargin: '0px 0px -50px 0px' // Margin for triggering
-            };
+          <a href="https://www.linkedin.com/in/adelwinnl" target="_blank" class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-details">
+              <h4>LinkedIn</h4>
+              <p>/adelwinnl</p>
+            </div>
+          </a>
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // If element enters viewport, animate it
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
+          <a href="https://www.instagram.com/adlwnngrho_" target="_blank" class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-instagram"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Instagram</h4>
+              <p>@adlwnngrho_</p>
+            </div>
+          </a>
 
-            // Elements to animate on scroll
-            const animatedElements = document.querySelectorAll('.skill-card, .project-card, .achievement-card, .stat, .contact-item');
-            animatedElements.forEach(el => {
-                el.style.opacity = '0'; // Set initial opacity to 0
-                el.style.transform = 'translateY(30px)'; // Set initial position slightly down
-                el.style.transition = 'all 0.6s ease'; // Add transition
-                observer.observe(el); // Start observing the element
-            });
-        });
+          <a href="https://t.me/adelwinnl" target="_blank" class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-telegram"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Telegram</h4>
+              <p>@adelwinnl</p>
+            </div>
+          </a>
 
-        // Function to scroll to the top of the page
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+          <!-- Location removed as requested -->
+        </div>
 
-        // Function to create the Matrix effect in the background
-        function createMatrixEffect() {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const matrixBg = document.querySelector('.matrix-bg');
-            
-            if (matrixBg) {
-                matrixBg.appendChild(canvas);
-                
-                canvas.style.position = 'absolute';
-                canvas.style.top = '0';
-                canvas.style.left = '0';
-                canvas.style.zIndex = '-1';
-                
-                // Function to adjust canvas size
-                function resize() {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                }
-                
-                resize(); // Call on initialization
-                window.addEventListener('resize', resize); // Call when window size changes
-                
-                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
-                const fontSize = 14;
-                const columns = canvas.width / fontSize;
-                const drops = Array(Math.floor(columns)).fill(1); // Array for Y position of each column
+        <div class="terminal-text">
+          <div class="terminal-title green">$ contact --info</div>
+          <div class="terminal-content">
+            <div>
+              <span class="green">┌─[</span><span class="red">adelwin-nugroho@portfolio</span><span
+                class="green">]─[</span><span class="red">~/contact</span><span class="green">]</span>
+            </div>
+            <div>
+              <span class="green">└─$</span> <span class="white">whoami</span>
+            </div>
+            <div>
+              <span class="red">Adelwin Nugroho Liandy - Network Engineer, Cybersecurity
+                Junior</span>
+            </div>
+            <div></div>
+            <div>
+              <span class="green">└─$</span>
+              <span class="white">echo "Reach out:"</span>
+            </div>
+            <div><span class="red">Email: adelwin122@gmail.com</span></div>
+            <div>
+              <span class="red">LinkedIn: linkedin.com/in/adelwinnl</span>
+            </div>
+            <div>
+              <span class="red">Instagram: instagram.com/adlwnngrho_</span>
+            </div>
+            <div><span class="red">Telegram: t.me/adelwinnl</span></div>
+            <!-- Updated Telegram in terminal -->
+            <div></div>
+            <div>
+              <span class="green">└─$</span>
+              <span class="white">./greetings.sh</span>
+            </div>
+            <div>
+              <span class="red"># Looking forward to connecting!</span>
+            </div>
+            <div>
+              <span class="red"># Let's build something great together.</span>
+            </div>
+            <div></div>
+            <div>
+              <span class="green">└─$</span> <span class="white">_</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-                function draw() {
-                    // Create trail effect
-                    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    ctx.fillStyle = '#ff0000'; // Matrix text color (red)
-                    ctx.font = fontSize + 'px monospace';
-                    
-                    for (let i = 0; i < drops.length; i++) {
-                        // Pick a random character
-                        const text = characters[Math.floor(Math.random() * characters.length)];
-                        // Draw the character
-                        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                        
-                        // Reset the drop if it goes past the bottom and randomly
-                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                            drops[i] = 0;
-                        }
-                        drops[i]++; // Move the drop down
-                    }
-                }
-                
-                setInterval(draw, 50); // Call draw function every 50ms
-            }
-        }
-        // Call matrix effect after a slight delay to ensure DOM is ready
-        setTimeout(createMatrixEffect, 1000);
-    </script>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 AdelwinNL. All Rights Reserved.</p>
+        <div class="footer-social">
+          <a href="https://t.me/adelwinnl" target="_blank"><i class="fab fa-telegram"></i></a>
+          <!-- Updated Telegram username in footer -->
+          <a href="https://www.instagram.com/adlwnngrho_" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/adelwinnl" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:adelwin122@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <div id="project-modal" class="project-modal">
+    <div class="project-modal-content">
+      <span class="project-modal-close">&times;</span>
+      <div class="project-card" style="
+            box-shadow: none;
+            border: none;
+            background: transparent;
+            margin: 0;
+          ">
+        <div class="modal-carousel" id="modal-carousel">
+          <img id="modal-carousel-image" alt="Project preview" />
+        </div>
+        <div class="carousel-control-div">
+          <div class="carousel-indicators" id="modal-carousel-indicators"></div>
+          <div class="carousel-control-div-inner">
+            <button class="carousel-control carousel-prev" aria-label="Previous image">
+              &#10094;
+            </button>
+            <button class="carousel-control carousel-next" aria-label="Next image">
+              &#10095;
+            </button>
+          </div>
+        </div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <ul id="modal-details"></ul>
+        <!-- Actions area for project modal (More Details button will be injected here) -->
+        <div id="project-modal-actions" class="modal-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="achievement-modal" class="project-modal">
+    <div class="project-modal-content">
+      <span class="project-modal-close achievement-modal-close">&times;</span>
+      <div style="
+            box-shadow: none;
+            border: none;
+            background: transparent;
+            margin: 0;
+          ">
+        <!-- carousel area for achievements -->
+        <div class="modal-carousel" id="achievement-modal-carousel">
+          <img id="achievement-modal-carousel-image" alt="Achievement preview" />
+        </div>
+        <div class="carousel-control-div">
+          <div class="carousel-indicators" id="achievement-modal-carousel-indicators"></div>
+          <div class="carousel-control-div-inner">
+            <button class="carousel-control achievement-carousel-prev" aria-label="Previous image">&#10094;</button>
+            <button class="carousel-control achievement-carousel-next" aria-label="Next image">&#10095;</button>
+          </div>
+        </div>
+
+        <h2 id="achievement-modal-title"></h2>
+        <p id="achievement-modal-description"></p>
+        <ul id="achievement-modal-details"></ul>
+
+        <!-- Actions area: 'More Details' button will be injected here -->
+        <div id="achievement-modal-actions" class="modal-actions"></div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
