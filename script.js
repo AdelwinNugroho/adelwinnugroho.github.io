@@ -409,6 +409,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const achievementBtns = document.querySelectorAll(".achievement-detail-btn");
 
+  // set details for achievement
   const achievementDetails = [
     {
       title: "CCNA Certification",
