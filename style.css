@@ -1971,9 +1971,9 @@
         /* ── GLITCH AVATAR ── */
         .glitch-avatar {
             position: relative;
-            width: 160px;
-            height: 160px;
-            border-radius: 18px;
+            width: 200px;
+            height: 260px;
+            border-radius: 30px;
             border: 2px solid var(--blue-neon);
             box-shadow: 0 0 32px rgba(0, 170, 255, 0.35), 0 0 60px rgba(0, 170, 255, 0.15);
             overflow: hidden;
@@ -2003,7 +2003,7 @@
             background-position: center;
             z-index: 2;
             opacity: 0;
-            border-radius: 16px;
+            border-radius: 28px;
         }
 
         .glitch-avatar::before {
@@ -2027,7 +2027,7 @@
                     rgba(0, 170, 255, 0.04) 4px);
             z-index: 3;
             pointer-events: none;
-            border-radius: 16px;
+            border-radius: 28px;
         }
 
         /* Corner brackets */
@@ -2814,6 +2814,11 @@
                 border-right: none;
                 border-bottom: 1px solid rgba(0, 170, 255, 0.15);
                 padding: 20px;
+            }
+
+            .glitch-avatar {
+                width: 180px;
+                height: 234px;
             }
 
             .exe-whoami {
