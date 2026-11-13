@@ -256,8 +256,8 @@
                     id: 'Aplikasi web Pomodoro Timer responsif dengan sesi fokus, jeda istirahat pendek & panjang, notifikasi alarm suara, dan kontrol intuitif untuk meningkatkan produktivitas belajar serta bekerja.'
                 },
                 'proj3-desc': {
-                    en: 'Responsive personal portfolio website designed with sleek modern aesthetics, interactive components, CSS Grid/Flexbox layouts, and smooth animations.',
-                    id: 'Website portofolio pribadi responsif yang dirancang dengan estetika modern, komponen interaktif, tata letak CSS Grid/Flexbox, dan animasi halus.'
+                    en: 'Developed a responsive personal Link in Bio landing page (similar to Linktree) with clean aesthetics, smooth UI, video background support, and centralized links to social profiles and projects.',
+                    id: 'Mengembangkan halaman landing page personal Link in Bio (mirip Linktree) responsif dengan desain bersih, antarmuka halus, dukungan video latar, serta tautan terpusat ke media sosial dan portofolio.'
                 },
 
                 /* ── SERTIFIKASI ── */
