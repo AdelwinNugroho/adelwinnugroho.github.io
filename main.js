@@ -251,6 +251,14 @@
                     en: 'Automated WhatsApp commerce bot engineered with Node.js and Baileys. Features catalog browsing, dynamic QRIS payments, order management, stock management, and automatic digital credential delivery with owner confirmation.',
                     id: 'Bot jual-beli WhatsApp otomatis yang dikembangkan dengan Node.js dan Baileys. Dilengkapi fitur katalog produk, pembayaran QRIS, manajemen pesanan & stok, serta pengiriman akun digital otomatis dengan konfirmasi owner.'
                 },
+                'proj2-desc': {
+                    en: 'Built a responsive Pomodoro Timer web application with focus sessions, short and long breaks, audio alerts, and intuitive controls to boost study and work productivity.',
+                    id: 'Aplikasi web Pomodoro Timer responsif dengan sesi fokus, jeda istirahat pendek & panjang, notifikasi alarm suara, dan kontrol intuitif untuk meningkatkan produktivitas belajar serta bekerja.'
+                },
+                'proj3-desc': {
+                    en: 'Responsive personal portfolio website designed with sleek modern aesthetics, interactive components, CSS Grid/Flexbox layouts, and smooth animations.',
+                    id: 'Website portofolio pribadi responsif yang dirancang dengan estetika modern, komponen interaktif, tata letak CSS Grid/Flexbox, dan animasi halus.'
+                },
 
                 /* ── SERTIFIKASI ── */
                 'exp-label': { en: '05 // CERTIFICATIONS', id: '05 // SERTIFIKASI' },

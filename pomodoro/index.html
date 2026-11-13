@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Study Pomodoro Timer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen flex flex-col bg-gradient-to-b from-slate-900 to-slate-800 text-slate-50">
+    <!-- Main content wrapper, grow so footer stays bottom -->
+    <main class="flex-grow flex flex-col items-center justify-center p-4">
+      <header class="mb-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Study Pomodoro Timer ⏳</h1>
+        <!--<p class="text-slate-300 mt-1">Simple, clean focus timer with breaks.</p>-->
+      </header>
+
+      <!-- Timer Section tanpa box card -->
+      <section class="flex flex-col gap-6 items-center w-full max-w-3xl">
+        <!-- Presets ATAS untuk semua viewport -->
+        <div class="flex flex-col items-center gap-2 w-full">
+          <span class="text-xs uppercase tracking-wide text-slate-400">Focus Time</span>
+          <div id="presetContainer" class="flex flex-wrap gap-2 justify-center"></div>
+        </div>
+
+        <!-- Mode Switch DI BAWAH presets -->
+        <div class="inline-flex rounded-xl overflow-hidden shadow">
+          <button id="btnFocus" class="px-4 py-2 text-sm font-medium bg-slate-700">Break</button>
+          <button id="btnShort" class="px-4 py-2 text-sm font-medium bg-slate-800 hover:bg-slate-700/60">Short Break (5)</button>
+          <button id="btnLong" class="px-4 py-2 text-sm font-medium bg-slate-800 hover:bg-slate-700/60">Long Break (10)</button>
+        </div>
+
+        <!-- Timer Display -->
+        <div class="grid place-items-center">
+          <div class="relative w-64 h-64 md:w-72 md:h-72">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+              <circle cx="50" cy="50" r="45" class="fill-none stroke-slate-700" stroke-width="10" />
+              <circle id="progressCircle" cx="50" cy="50" r="45" class="fill-none stroke-white" stroke-width="10" stroke-linecap="round" transform="rotate(-90 50 50)" />
+            </svg>
+            <div class="absolute inset-0 grid place-items-center">
+              <div class="text-center">
+                <div id="timeText" class="text-5xl md:text-6xl font-mono tabular-nums leading-none">25:00</div>
+                <div id="modeLabel" class="mt-1 text-slate-400">Focus</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button id="btnStartPause" class="px-6 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow">Start</button>
+          <button id="btnReset" class="px-6 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-semibold shadow">Reset</button>
+
+          <!-- Sound chooser -->
+          <div class="flex items-center gap-2 ml-2">
+            <label for="soundSelect" class="text-sm text-slate-300">Alarm:</label>
+            <select id="soundSelect" class="bg-slate-800 border border-slate-700 rounded-lg px-2 py-1 text-sm">
+              <option value="beep">Beep</option>
+              <option value="bell">Bell</option>
+              <option value="chime">Chime</option>
+            </select>
+            <button id="btnTestSound" class="px-3 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-sm">Tes Suara</button>
+          </div>
+        </div>
+
+        <div class="text-center text-sm text-slate-400">
+          <p>Tip: pilih durasi fokus (5/10/15/20/25/50), lalu tekan <span class="text-slate-200">Start</span>. Kamu bisa <span class="text-slate-200">Pause</span> kapan saja, dan <span class="text-slate-200">Reset</span> untuk mengulang.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL: Alarm (tetap ada) -->
+    <div id="alarmModal" class="hidden fixed inset-0 bg-slate-900/70 backdrop-blur-sm grid place-items-center p-4 z-50">
+      <div class="w-full max-w-md bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl">
+        <div class="px-5 py-4 border-b border-slate-700 flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Timer</h3>
+          <button id="modalClose" class="text-slate-300 hover:text-white">✕</button>
+        </div>
+        <div class="p-6 text-center space-y-3">
+          <div class="mx-auto w-16 h-16 rounded-full border-2 border-slate-300 grid place-items-center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-rose-400"><path d="M10 2h4" stroke-width="2"/><path d="M12 14V7" stroke-width="2"/><circle cx="12" cy="14" r="7" stroke-width="2"/></svg>
+          </div>
+          <div class="text-xl font-semibold">Waktu Habis</div>
+          <div id="modalSub" class="text-slate-300">00:00</div>
+        </div>
+        <div class="px-5 py-4 border-t border-slate-700 flex items-center justify-center gap-3">
+          <button id="modalRestart" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold">Restart</button>
+          <button id="modalOk" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer fixed bottom -->
+    <footer class="py-4 text-center text-xs text-slate-500">
+      Created By @AdelwinNL
+    </footer>
+
+    <script>
+      const PRESETS = [5, 10, 15, 20, 25, 50];
+      const SHORT_BREAK = 5;
+      const LONG_BREAK = 10;
+
+      let mode = 'focus';
+      let minutes = 25;
+      let secondsLeft = minutes*60;
+      let running = false;
+      let timerId = null;
+
+      const timeText = document.getElementById('timeText');
+      const modeLabel = document.getElementById('modeLabel');
+      const progressCircle = document.getElementById('progressCircle');
+      const btnStartPause = document.getElementById('btnStartPause');
+      const btnReset = document.getElementById('btnReset');
+      const btnFocus = document.getElementById('btnFocus');
+      const btnShort = document.getElementById('btnShort');
+      const btnLong = document.getElementById('btnLong');
+      const presetContainer = document.getElementById('presetContainer');
+      const soundSelect = document.getElementById('soundSelect');
+      const btnTestSound = document.getElementById('btnTestSound');
+
+      const alarmModal = document.getElementById('alarmModal');
+      const modalOk = document.getElementById('modalOk');
+      const modalRestart = document.getElementById('modalRestart');
+      const modalClose = document.getElementById('modalClose');
+      const modalSub = document.getElementById('modalSub');
+
+      const savedSound = localStorage.getItem('pomodoroSound');
+      if (savedSound) soundSelect.value = savedSound;
+      soundSelect.addEventListener('change', ()=>{
+        localStorage.setItem('pomodoroSound', soundSelect.value);
+      });
+
+      PRESETS.forEach(m => {
+        const b = document.createElement('button');
+        b.className = 'px-3 py-1.5 rounded-lg text-sm border border-slate-700 bg-slate-800 hover:bg-slate-700/60';
+        b.textContent = m + 'm';
+        b.addEventListener('click', () => switchToFocus(m));
+        presetContainer.appendChild(b);
+      });
+
+      function pad(n){ return String(n).padStart(2,'0'); }
+      function fmt(sec){ const m = Math.floor(sec/60), s = sec%60; return `${pad(m)}:${pad(s)}`; }
+      const CIRC = Math.PI*2*45;
+      progressCircle.setAttribute('stroke-dasharray', CIRC);
+
+      function render(){
+        timeText.textContent = fmt(secondsLeft);
+        const label = mode==='focus'?'Focus':mode==='short'?'Short Break':'Long Break';
+        modeLabel.textContent = label;
+        const prefix = running?'⏳':'⏸️';
+        document.title = `${prefix} ${fmt(secondsLeft)} – ${label} | Study Pomodoro Timer`;
+        const progress = Math.max(0,Math.min(1,1 - secondsLeft/(minutes*60)));
+        progressCircle.style.transition = running?'stroke-dashoffset 1s linear':'stroke-dashoffset .2s ease';
+        progressCircle.setAttribute('stroke-dashoffset',(1-progress)*CIRC);
+        btnFocus.classList.toggle('bg-slate-700', mode==='focus');
+        btnShort.classList.toggle('bg-slate-700', mode==='short');
+        btnLong.classList.toggle('bg-slate-700', mode==='long');
+      }
+
+      function stopTimer(){ if(timerId){clearInterval(timerId); timerId=null;} running=false; btnStartPause.textContent='Start'; }
+      function startTimer(){ if(timerId) return; running=true; btnStartPause.textContent='Pause'; timerId=setInterval(()=>{ secondsLeft=Math.max(0,secondsLeft-1); if(secondsLeft===0){ onTimeUp(); } render(); },1000); }
+      function reset(){ stopTimer(); secondsLeft=minutes*60; render(); }
+
+      function setMode(newMode, mins){ mode=newMode; minutes=mins; secondsLeft=minutes*60; stopTimer(); render(); }
+      function switchToFocus(m){ setMode('focus', m); }
+      function switchToShort(){ setMode('short', SHORT_BREAK); }
+      function switchToLong(){ setMode('long', LONG_BREAK); }
+
+      btnStartPause.addEventListener('click',()=>{ running?stopTimer():startTimer(); render(); });
+      btnReset.addEventListener('click', ()=>{ stopAlarmLoop(); reset(); });
+      btnFocus.addEventListener('click',()=>{ stopAlarmLoop(); switchToFocus(minutes); });
+      btnShort.addEventListener('click',()=>{ stopAlarmLoop(); switchToShort(); });
+      btnLong.addEventListener('click',()=>{ stopAlarmLoop(); switchToLong(); });
+
+      // ===== WebAudio (looping pattern until dismissed) =====
+      let audioCtx;
+      function getCtx(){ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return audioCtx; }
+      function envGain(ctx, duration=1.0){
+        const g = ctx.createGain();
+        const now = ctx.currentTime;
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.exponentialRampToValueAtTime(0.8, now + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+        return g;
+      }
+      function tone(ctx, type, freq, start, dur){
+        const osc = ctx.createOscillator();
+        osc.type = type; osc.frequency.value = freq;
+        const g = envGain(ctx, dur);
+        osc.connect(g).connect(ctx.destination);
+        osc.start(ctx.currentTime + start);
+        osc.stop(ctx.currentTime + start + dur);
+      }
+
+      function playPattern(kind='beep'){
+        const ctx = getCtx();
+        if (kind === 'beep'){
+          tone(ctx,'sine',880,0.0,0.2);
+          tone(ctx,'sine',880,0.35,0.2);
+          tone(ctx,'sine',880,0.7,0.2);
+        } else if (kind === 'bell'){
+          tone(ctx,'sine',660,0.0,1.0);
+          tone(ctx,'sine',1320,0.0,0.6);
+        } else if (kind === 'chime'){
+          tone(ctx,'triangle',1200,0.0,0.35);
+          tone(ctx,'triangle',900,0.25,0.35);
+          tone(ctx,'triangle',680,0.5,0.5);
+        }
+      }
+
+      let alarmInterval = null;
+      function startAlarmLoop(kind){
+        if(alarmInterval) return;
+        playPattern(kind);
+        alarmInterval = setInterval(()=>playPattern(kind), 1200);
+      }
+      function stopAlarmLoop(){
+        if(alarmInterval){ clearInterval(alarmInterval); alarmInterval=null; }
+      }
+
+      function onTimeUp(){
+        stopTimer();
+        modalSub.textContent = '00:00';
+        alarmModal.classList.remove('hidden');
+        startAlarmLoop(soundSelect.value);
+      }
+
+      function closeModal(){ alarmModal.classList.add('hidden'); }
+      modalOk.addEventListener('click', ()=>{ stopAlarmLoop(); closeModal(); });
+      modalClose.addEventListener('click', ()=>{ stopAlarmLoop(); closeModal(); });
+      modalRestart.addEventListener('click', ()=>{ stopAlarmLoop(); closeModal(); reset(); startTimer(); });
+
+      // One-shot test
+      btnTestSound.addEventListener('click', ()=> playPattern(soundSelect.value));
+
+      render();
+    </script>
+  </body>
+</html>
