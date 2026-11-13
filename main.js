@@ -248,16 +248,8 @@
                 'projects-label': { en: '04 // EXPERIENCE', id: '04 // PENGALAMAN' },
                 'projects-title': { en: 'Career Timeline', id: 'Perjalanan Karir' },
                 'proj1-desc': {
-                    en: 'Built a responsive Pomodoro Timer website with focus, short break, and long break presets to help improve study and work efficiency.',
-                    id: 'Membangun website Pomodoro Timer responsif dengan preset fokus, istirahat pendek, dan istirahat panjang untuk meningkatkan efisiensi belajar dan bekerja.'
-                },
-                'proj2-desc': {
-                    en: 'Developed a personal Link in Bio website (similar to Linktree) using HTML/CSS/JS, allowing centralized access to social media and project links.',
-                    id: 'Mengembangkan website Link in Bio personal (mirip Linktree) menggunakan HTML/CSS/JS, memungkinkan akses terpusat ke media sosial dan tautan proyek.'
-                },
-                'proj3-desc': {
-                    en: 'Developing Python scripts for automating the initial configuration of Cisco routers and switches, reducing manual setup time significantly.',
-                    id: 'Mengembangkan skrip Python untuk mengotomatiskan konfigurasi awal router dan switch Cisco, mengurangi waktu pengaturan manual secara signifikan.'
+                    en: 'Automated WhatsApp commerce bot engineered with Node.js and Baileys. Features catalog browsing, dynamic QRIS payments, order management, stock management, and automatic digital credential delivery with owner confirmation.',
+                    id: 'Bot jual-beli WhatsApp otomatis yang dikembangkan dengan Node.js dan Baileys. Dilengkapi fitur katalog produk, pembayaran QRIS, manajemen pesanan & stok, serta pengiriman akun digital otomatis dengan konfirmasi owner.'
                 },
 
                 /* ── SERTIFIKASI ── */
