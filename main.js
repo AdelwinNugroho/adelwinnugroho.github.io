@@ -2,13 +2,14 @@
             /* ── THEME TOGGLE ── */
             var themeBtn = document.getElementById('theme-toggle');
             var isLight = false;
-            if (themeBtn) {
-                themeBtn.addEventListener('click', function () {
-                    isLight = !isLight;
-                    document.body.classList.toggle('light-mode', isLight);
-                    themeBtn.textContent = isLight ? '🌙' : '☀️';
-                });
-            }
+            try {
+                var savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                    isLight = true;
+                    document.body.classList.add('light-mode');
+                    if (themeBtn) themeBtn.textContent = '🌙';
+                }
+            } catch (e) {}
 
             /* ── CURSOR (desktop only) ── */
             if (window.innerWidth > 768 && !('ontouchstart' in window)) {
@@ -29,34 +30,52 @@
             });
             }
 
-            /* ── MATRIX RAIN ── */
+            /* ── MATRIX RAIN (Mode Gelap: Cyberpunk Asli, Mode Terang: Versi Baru) ── */
             var canvas = document.getElementById('matrix-canvas');
-            if (canvas) {
-                var ctx = canvas.getContext('2d');
+            var ctx = canvas ? canvas.getContext('2d') : null;
+            if (canvas && ctx) {
+                var step = 18;
                 var cols, drops;
                 function initMatrix() {
                     canvas.width = window.innerWidth;
                     canvas.height = window.innerHeight;
-                    cols = Math.floor(canvas.width / 18);
+                    cols = Math.floor(canvas.width / step);
                     drops = [];
                     for (var x = 0; x < cols; x++) drops[x] = 1;
                 }
                 initMatrix();
                 window.addEventListener('resize', initMatrix);
+
                 var chars = '01ABCDEF0110';
                 function drawMatrix() {
-                    ctx.fillStyle = 'rgba(2,13,26,0.05)';
+                    var inLight = document.body.classList.contains('light-mode');
+                    ctx.fillStyle = inLight ? 'rgba(232, 232, 232, 0.06)' : 'rgba(2, 13, 26, 0.05)';
                     ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    ctx.fillStyle = '#005599';
-                    ctx.font = '13px monospace';
+
+                    ctx.fillStyle = inLight ? 'rgba(0, 102, 204, 0.35)' : '#00aaff';
+                    ctx.font = '13px "Share Tech Mono", monospace';
+
                     for (var i = 0; i < drops.length; i++) {
                         var ch = chars[Math.floor(Math.random() * chars.length)];
-                        ctx.fillText(ch, i * 18, drops[i] * 18);
-                        if (drops[i] * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                        ctx.fillText(ch, i * step, drops[i] * step);
+                        if (drops[i] * step > canvas.height && Math.random() > 0.975) drops[i] = 0;
                         drops[i]++;
                     }
                 }
-                setInterval(drawMatrix, 55);
+                setInterval(drawMatrix, 50);
+            }
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function () {
+                    isLight = !isLight;
+                    document.body.classList.toggle('light-mode', isLight);
+                    themeBtn.textContent = isLight ? '🌙' : '☀️';
+                    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+                    if (ctx && canvas) {
+                        ctx.fillStyle = isLight ? '#E8E8E8' : '#020d1a';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
+                });
             }
 
             /* ── BOOT SCREEN ── */
